@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script type="text/javascript">
+        //只有刷新会触发
+        onunload = function () {
+            alert("Test");
+        };
+        //关闭浏览器也会触发
+        onbeforeunload = function () {
+             alert("hhh");
+            //return false;
+        };
+
+    </script>	
+</head>
+<body>
+
+</body>
+</html>
