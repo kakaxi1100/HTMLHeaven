@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <style type="text/css">
+      input{
+          width:90%;
+      } 
+    </style>
+    <script type="text/javascript">
+        onload = function () {
+            var timeId;
+            txt1.onkeyup = function () {
+                if (timeId != null) {
+                    clearTimeout(timeId);
+                }
+                timeId = setTimeout(function () {
+                    txt2.value = txt1.value;
+                }, 500);
+            };
+        };
+    </script>
+</head>
+<body>
+    <input type="text" id="txt1" /><br/><br />
+    <input type="text" id="txt2" />
+</body>
+</html>

@@ -1,0 +1,36 @@
+﻿body{
+    margin:0;
+}
+
+div#container{
+    width:100%;
+    height:1050px;
+    background-color:gray;
+}
+
+div#head{
+    width:100%;
+    height:10%;
+    background-color:antiquewhite;
+}
+
+div#menu{
+    width:30%;
+    height:80%;
+    background-color:azure;
+    float:left;
+}
+
+div#content{
+    width:70%;
+    height:80%;
+    background-color:burlywood;
+    float:left;
+}
+
+div#root{
+    width:100%;
+    height:10%;
+    background-color:blueviolet;
+    clear:both;
+}

@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <script type="text/javascript">
+
+        onload = function () {
+            var span = document.getElementById("second");
+            var intervalId = setInterval(function () {
+                var num = parseInt(span.innerHTML) - 1;
+                span.innerHTML = num;
+                if(num <=0)
+                {
+                    location.href = "http://www.baidu.com";
+                    clearInterval(intervalId);
+                }
+            }, 1000);
+        };
+    </script>
+</head>
+<body>
+    <p>请等待<span id="second">10</span>秒后跳转</p>
+</body>
+</html>
