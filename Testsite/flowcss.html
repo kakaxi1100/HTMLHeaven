@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <style type="text/css">
+        #container{
+           
+        }
+
+        #position1{
+            width:100px;
+            height:100px;
+            
+            border:1px solid red;
+            /*relative 不会脱离文档流*/
+            /*static 不会脱离文档流*/
+            /*absolute 会脱离文档流*/
+            /*fixed 会脱离文档流*/
+            /*absolute 和 fixed 区别
+                在于滚动的时候，fixed 滚动时不会改变位置
+                absolute 会随滚动改变位置
+            */
+            /*定位都是相对于父级容器的*/
+            position:absolute;
+            
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="position1"></div>
+    </div>
+    <script>
+        for (var i = 0; i < 100; i++) {
+            document.write(i+"<br/>");
+        }
+    </script>
+    
+</body>
+</html>

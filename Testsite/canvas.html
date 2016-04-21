@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <style type="text/css">   
+    </style>
+    <script>
+        var mycanvas, context;
+        onload = function () {
+            createCanvas();
+            //drawRect();
+            drawImg();
+        }
+
+        function createCanvas() {
+            document.body.innerHTML = "<canvas id=\"mycanvas\" width=\"100\" height=\"100\">" + "</canvas>";
+            mycanvas = document.getElementById("mycanvas");
+            context = mycanvas.getContext("2d");
+        }
+
+        function drawRect() {
+            context.fillStyle = "green";
+            context.translate(50, 50);
+            context.rotate(45 * Math.PI / 180);
+
+            context.fillRect(0, 0, 100, 100);
+        }
+
+        function drawImg() {
+            var img = new Image();
+            img.onload = function () {
+                context.drawImage(this,10,10);
+            }
+            img.src = "Sources/1.jpg";
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

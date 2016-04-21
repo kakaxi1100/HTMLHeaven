@@ -1,0 +1,10 @@
+﻿.container{
+    column-width:100px;
+    column-gap:5px;
+    column-rule:5px solid red;
+}
+
+.container div{
+    width:100px;
+    margin:5px auto;
+}
