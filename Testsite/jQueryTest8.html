@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="Scripts/jquery-2.2.3.js"></script>
+    <script>
+        $(document).ready(function () {
+            //$("#d1").children().css({ border: "3px dotted green" });
+            //$("#d1").find("span").css({ border: "3px dotted green" });
+            //$("span").parent().css({ border: "3px dotted black" });
+            //$("p").parents().css({ border: "3px dotted black" });
+            //$("p").parentsUntil("body").css({ border: "3px dotted black" });
+        });
+    </script>
+    <style>
+        #d1{
+          width:500px;
+          height:300px;
+          border:3px solid red;
+        }
+        #d2{
+            margin-top:10px;
+            margin-left:10px;
+            width:400px;
+            height:200px;
+            border:3px solid green;
+        }
+        #p1{
+           margin-top:10px;
+            margin-left:10px;
+            width:150px;
+            height:80px;
+            border:3px solid blue;
+        }
+        #s1{
+            color:chocolate;
+        }
+    </style>
+</head>
+<body>
+    <div id="d1">
+        div1
+        <div id="d2">
+            div2
+            <p id="p1">
+                <span id="s1">
+                    Selects all elements that are headers
+                </span>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

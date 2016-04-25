@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="Scripts/easeljs-0.8.2.combined.js"></script>
+    <script src="Scripts/tweenjs-0.6.2.combined.js"></script>
+    <script src="Scripts/soundjs-0.6.2.combined.js"></script>
+    <script src="Scripts/preloadjs-0.6.2.min.js"></script>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+    </style>
+    <script>
+        var stage;
+        onload = function () {
+            stage = new createjs.Stage('root');
+            createjs.Ticker.setFPS(60);
+            createjs.Ticker.addEventListener("tick", tick);
+            var c = new createjs.Shape();
+            c.graphics.beginFill("#00ff00");
+            c.graphics.drawCircle(0, 0, 30);
+            c.x = c.y = 100;
+            stage.addChild(c);
+            
+            c.cursor = 'pointer';
+            c.addEventListener("dblclick", function (e) {
+                alert(this === window);
+            });
+            c.addEventListener("mouseover", function (e) {
+                c.alpha = 1;
+                //alert("aa");
+            });
+            c.addEventListener("mouseout", function (e) {
+                c.alpha = .5;
+                //alert("bb");
+            });
+
+            c.addEventListener("mousedown", function (e) {
+                stage.addEventListener("stagemousemove", function () {
+                    c.x = stage.mouseX;
+                    c.y = stage.mouseY;
+                });
+
+                stage.addEventListener("stagemouseup", function (e) {
+                    //alert(e.target === stage);
+                    for (var k in e) {
+                        console.log(k + " : " + e[k]);
+                    }
+                });
+            });
+            //stage.enableMouseOver();
+        }
+
+        function tick(e) {
+            stage.update();
+        }
+    </script>
+</head>
+<body>
+    <canvas id="root" width="1000" height="800" style="background-color:aliceblue"></canvas>
+</body>
+</html>

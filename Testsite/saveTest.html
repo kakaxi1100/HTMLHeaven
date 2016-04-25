@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <span id="num">0</span>
+    <button id="btn">click</button>
+    <script>
+        onload = function () {
+            var t = document.getElementById("num");
+            var b = document.getElementById("btn");
+            var num = 0;
+            if (sessionStorage.num) {
+                num = sessionStorage.num;
+                t.innerHTML = num;
+            }
+            b.onclick = function () {
+                num++;
+                sessionStorage.num = num;
+                t.innerHTML = num;
+            }
+        }
+    </script>
+    <!--<textarea id="text" style="width:100px; height:100px"></textarea>
+    <br />
+    <button id="btn"> click</button>
+    <script>
+        var t;
+        var b;
+        onload = function () {
+            t = document.getElementById("text");
+            b = document.getElementById("btn");
+            if (localStorage.text) {
+                t.value = localStorage.text;
+            }
+            b.onclick = function () {
+                localStorage.text = t.value;
+            }
+        }
+    </script>-->
+</body>
+</html>

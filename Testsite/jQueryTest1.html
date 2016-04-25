@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="Scripts/jquery-2.2.3.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#btn").click(function () {
+                $("p").hide(500);
+            });
+            $("#show").click(function () {
+                $("p").show(500);
+            });
+            $("#toggle").click(function () {
+                $("p").toggle(500);
+            });
+        });
+    </script>
+</head>
+<body>
+    <p> hello </p>
+    <button id="btn">hide</button>
+    <button id="show">show</button>
+    <button id="toggle">show/hide</button>
+</body>
+</html>

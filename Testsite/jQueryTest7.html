@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="Scripts/jquery-2.2.3.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#delete").on("click", function () {
+                //$("div").empty();
+                $("div").remove();
+            });
+        });
+    </script>
+</head>
+<body>
+    <div style="width:200px; height:200px; background-color:antiquewhite;">
+        Set a 
+        <p>numeric property on a paragraph</p>
+        <p>and then remove it.</p>
+    </div>
+    <button id="delete">delete</button>
+</body>
+</html>

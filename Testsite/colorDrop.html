@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="Scripts/easeljs-0.8.2.combined.js"></script>
+    <script src="Scripts/tweenjs-0.6.2.combined.js"></script>
+    <script src="Scripts/soundjs-0.6.2.combined.js"></script>
+    <script src="Scripts/preloadjs-0.6.2.min.js"></script>
+    <script>
+        var stage;
+        var colors = ['red', 'black', 'blue', 'green'];
+        var blocks = new Array(4);
+        var slots = new Array(4);
+        onload = function () {
+            setupstage();
+            buildBlocks();
+            setBlocks();
+        }
+
+        function buildBlocks() {
+            var rect;
+            for (var i = 0; i < 4; i++) {
+                //create rects
+                rect = new createjs.Shape();
+                rect.graphics.beginStroke(colors[i]);
+                rect.graphics.drawRect(0, 0, 100, 100);
+                rect.regX = rect.regY = 50;
+                rect.x = i*120 + 100;
+                rect.y = 100;
+                rect.id = i;
+                slots[i] = rect;
+                stage.addChild(rect);
+
+                //create blocks
+                rect = new createjs.Shape();
+                rect.graphics.beginStroke(colors[i]);
+                rect.graphics.beginFill(colors[i]);
+                rect.graphics.drawRect(0, 0, 100, 100);
+                rect.id = i;
+                blocks[i] = rect;
+            }
+        }
+
+        function setBlocks() {
+            var block;
+            for (var i = 0; i < 4; i++) {
+                var index = Math.floor(Math.random() * blocks.length);
+                block = blocks.splice(index, 1)[0];
+                block.regX = block.regY = 50;
+                block.x = i * 120 + 100;
+                block.y = 500;
+                block.homeX = block.x;
+                block.homeY = block.y;
+                stage.addChild(block);
+                block.addEventListener("mousedown",startDrag);
+            }
+        }
+
+        function startDrag(e) {
+            var block = e.target;
+            stage.addEventListener("stagemousemove", function (e) {
+                block.x = stage.mouseX;
+                block.y = stage.mouseY;
+            });
+
+            stage.addEventListener("stagemouseup", function (e) {
+                var slot = slots[block.id];
+                var pt = slot.globalToLocal(stage.mouseX, stage.mouseY);
+                stage.removeAllEventListeners();
+                        
+                if (block.hitTest(pt.x, pt.y)) {
+                    block.removeEventListener("mousedown", startDrag);
+                    createjs.Tween.get(block).to({ x: slot.x, y: slot.y }, 1000,
+                        createjs.Ease.quadOut).call(checkGame, [block.id]);
+                } else {
+                    createjs.Tween.get(block).to({ x: block.homeX, y: block.homeY }, 1000);
+                }
+            });
+        }
+
+        function checkGame(i) {
+            alert("You Match the "+colors[i]+" Color!");
+        }
+
+        function setupstage() {
+            stage = new createjs.Stage("root");
+            createjs.Ticker.setFPS(60);
+            createjs.Ticker.addEventListener("tick", function () {
+                stage.update();
+            });
+        }
+    </script>
+</head>
+<body>
+    <canvas id="root" width="1000" height="800" style="background-color:aliceblue"></canvas>
+</body>
+</html>

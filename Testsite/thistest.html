@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <script>
+        /*(function () {
+            var Orb = function () {
+                alert(this === window);
+            }
+            window.Orb = Orb;
+        })();
+
+        var o = new Orb();
+        console.log("a");
+
+        var f = function () {
+            var _this = {
+                con:function(){
+                    alert(this === _this);
+                }
+            };
+            _this.con();
+            return _this;
+        }
+
+        var oo = f();
+        */
+
+        (function () {
+            var Parent = function (name) {
+                this.name = name;
+                this.getName = function () {
+                    return this.name;
+                }
+                //alert("I am parent!");
+            }
+
+            window.Parent = Parent;
+        })();
+
+        (function () {
+            var Child = function (name) {
+                this.init(name);
+                //alert("I am Child!");
+            };
+            Child.prototype = new Parent("Parent");
+            Child.prototype.init = function (name) {
+                this.name = name;
+                alert(this.getName());
+            };
+            window.Child = Child;
+        })();
+
+        var o = new Child("kk");
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

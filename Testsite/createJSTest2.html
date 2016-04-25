@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="Scripts/easeljs-0.8.2.combined.js"></script>
+    <script src="Scripts/tweenjs-0.6.2.combined.js"></script>
+    <script src="Scripts/soundjs-0.6.2.combined.js"></script>
+    <script src="Scripts/preloadjs-0.6.2.min.js"></script>
+    <script>
+        var stage;
+        onload = function () {
+            stage = new createjs.Stage('root');
+            createjs.Ticker.setFPS(60);
+            createjs.Ticker.addEventListener("tick", tick);
+
+            var g = new createjs.Graphics();
+            g.beginStroke('#000');
+            g.beginFill("#ff0000");
+            g.drawRect(0, 0, 100, 100);
+
+            var shape = new createjs.Shape(g);
+            shape.regX = shape.regY = 50;
+            shape.x = 200;
+            shape.y = 100;
+
+            /*var screen = new createjs.Shape();
+            screen.graphics.beginFill(createjs.Graphics.getRGB(0, 0, 0, 0.6)).drawRect(0, 0, stage.canvas.width, stage.canvas.height);
+            stage.addChild(screen);*/
+            stage.addChild(shape);
+            stage.shape = shape;
+
+            createjs.Tween.get(shape).wait(1000).to({ rotation: 360 }, 3000);
+        }
+
+        function update() {
+            var nextX = stage.shape.x + 1;
+            stage.shape.nextX = nextX;
+        }
+        function renderCircel() {
+            stage.shape.x = stage.shape.nextX;
+        }
+        function tick(e) {
+            update();
+            renderCircel();
+            stage.update();
+        }
+    </script>
+</head>
+<body>
+    <canvas id="root" width="1000" height="800" ></canvas>
+</body>
+</html>

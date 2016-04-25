@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="Scripts/jquery-2.2.3.js"></script>
+</head>
+<body>
+    <script>
+        $(document).ready(function () {
+            $("#btn").click(function () {
+                $("p").toggle(1000, function () {
+                    this.innerHTML = "<span style=\"color:red;\">haha</span>";
+                });
+            });
+        });
+    </script>
+    <button id="btn">HHH</button>
+    <p> hello world</p>
+    <p> hello world</p>
+</body>
+</html>

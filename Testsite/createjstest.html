@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="Scripts/easeljs-0.8.2.combined.js"></script>
+    <script src="Scripts/tweenjs-0.6.2.combined.js"></script>
+    <script src="Scripts/soundjs-0.6.2.combined.js"></script>
+    <script src="Scripts/preloadjs-0.6.2.min.js"></script>
+    <script>
+        var stage;
+        var queue;
+        function init() {
+            queue = new createjs.LoadQueue();
+            queue.installPlugin(createjs.Sound);
+            queue.addEventListener("complete", loadComplete);
+            queue.loadManifest([
+                {id:"butterfly",src:"Sources/1.jpg"},
+                { id: "mysound", src: "Sources/GU-StealDaisy.mp3" },
+                { id: "game", src: "Sources/Game-Death.mp3" }
+            ]);
+        }
+
+        function loadComplete() {
+            setupStage();
+            buildButterflies();
+        }
+
+        function setupStage() {
+            stage = new createjs.Stage(document.getElementById("root"));
+            createjs.Ticker.setFPS(60);
+            createjs.Ticker.addEventListener("tick", function () {
+                stage.update();
+            });
+        }
+
+        function buildButterflies() {
+            var img = queue.getResult("butterfly");
+            var i, sound, butterfly;
+            for (var i = 0; i < 3; i++) {
+                butterfly = new createjs.Bitmap(img);
+                butterfly.x = i * 200;
+                stage.addChild(butterfly);
+                createjs.Tween.get(butterfly).wait(i * 1000).to({y:100},1000,
+                    createjs.Ease.quadOut).call(butterflyComplete);
+                sound = createjs.Sound.play('mysound', createjs.Sound.INTERRUPT_NONE, i * 1000);
+            }
+        }
+
+        function butterflyComplete() {
+            stage.removeChild(this);
+            if(!stage.getNumChildren())
+            {
+                createjs.Sound.play('game');
+            }
+        }
+    </script>
+</head>
+<body onload="init()">
+    <canvas id="root" width="1000" height="800" style="border:5px solid black"></canvas>
+</body>
+</html>

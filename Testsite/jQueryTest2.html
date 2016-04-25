@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="Scripts/jquery-2.2.3.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#fade").on("click", function () {
+                $("div").fadeIn(1000);
+            });
+            $("#out").on("click", function () {
+                $("div").fadeOut(1000);
+            });
+            $("#toggle").on("click", function () {
+                $("div").fadeToggle(1000);
+            });
+            $("#to").on("click", function () {
+                $("div").fadeTo("slow", 0.7);
+            });
+        });
+    </script>
+</head>
+<body>
+    <button id="fade">in</button>
+    <button id="out">out</button>
+    <button id="toggle">toggle</button>
+    <button id="to">to</button>
+    <div style="display:none; width:100px; height:100px;background-color:antiquewhite;"></div>
+    <div style="display:none; width:100px; height:100px;background-color:azure;"></div>
+    <div style="display:none; width:100px; height:100px;background-color:aquamarine;"></div>
+
+</body>
+</html>
